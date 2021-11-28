@@ -701,7 +701,23 @@
                 android:layout_margin="20dp"
                 />
 
-
+            <TextView
+                android:id="@+id/score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/gradient1"
+                android:padding="15dp"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:textColor="#fff"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                app:layout_constraintTop_toBottomOf="@+id/button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="EXCELLENT \n score : 650"
+                />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>

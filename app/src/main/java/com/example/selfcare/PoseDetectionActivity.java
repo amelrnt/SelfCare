@@ -98,7 +98,7 @@ public class PoseDetectionActivity extends AppCompatActivity {
 
 
                 int maxPos=0;
-                float maxconfidence=0.00f;
+                float maxconfidence=0.00f   ;
                 for(int i=0;i<confidence.length;i++){
                     Log.i("output2",""+confidence[i]);
                     if(confidence[i]>maxconfidence) {

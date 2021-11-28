@@ -1,14 +1,33 @@
 package com.example.selfcare;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class HappynessMeterActivity extends AppCompatActivity {
     String answer1,answer2,answer3,answer4,answer5,answer6,answer7,answer8,answer9,answer10;
@@ -29,6 +48,7 @@ public class HappynessMeterActivity extends AppCompatActivity {
         AutoCompleteTextView act9=findViewById(R.id.act9);
         AutoCompleteTextView act10=findViewById(R.id.act10);
         AutoCompleteTextView act11=findViewById(R.id.act11);
+        TextView score =findViewById(R.id.score);
         Button button=findViewById(R.id.button);
 
         String[] array1=getResources().getStringArray(R.array.optionSet1);
@@ -71,8 +91,78 @@ public class HappynessMeterActivity extends AppCompatActivity {
                     Toast.makeText(HappynessMeterActivity.this, "Please answer all the questions", Toast.LENGTH_SHORT).show();
                 }
                 else{
+                    JSONObject json = new JSONObject();
+                    try {
+                        json.put("veggies", answer1);
+                        json.put("support", answer2);
+                        json.put("donation", answer3);
+                        json.put("bmi", answer4);
+                        json.put("steps", answer5);
+                        json.put("sleep", answer6);
+                        json.put("shouting", answer7);
+                        json.put("awards", 1);
+                        json.put("passion", answer9);
+                        json.put("think", answer10);
 
-                    //TODO HERE DO REST OF THE STUFF
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
+                    final RequestQueue requestQueue = Volley.newRequestQueue(HappynessMeterActivity.this);
+
+                    String url = "https://amelr.pythonanywhere.com/predict";
+
+                    ProgressDialog pDialog = new ProgressDialog(HappynessMeterActivity.this);
+                    pDialog.setMessage("Loading...PLease wait");
+                    pDialog.show();
+
+                    JsonObjectRequest
+                            jsonObjReq
+                            = new JsonObjectRequest(
+                            Request.Method.POST,
+                            url,
+                            json,
+                            new Response.Listener() {
+
+                                @Override
+                                public void onResponse(Object response) {
+
+                                    JSONObject jo = (JSONObject) response;
+                                    Log.d("ritikmary", response.toString());
+                                    double scores= 0;
+                                    try {
+                                        scores = Double.parseDouble(jo.getString("Prediction"));
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+
+                                    String type;
+                                    if(scores<550.00)
+                                        type="Poor";
+                                    else if(scores<680.00)
+                                         type="Good";
+                                    else
+                                        type="Excellent";
+                                 long j =  Math.round(scores);
+                                    score.setText(type+"\n Score : "+j);
+                                    pDialog.hide();
+                                }
+
+                            },
+                            new Response.ErrorListener() {
+
+                                @Override
+                                public void onErrorResponse(VolleyError error)
+                                {
+                                    Log.i("ritikmary", "Error: "
+                                            + error.getMessage());
+                                    pDialog.hide();
+                                }
+                            });
+                    requestQueue.add(jsonObjReq);
+
+
                 }
 
             }
