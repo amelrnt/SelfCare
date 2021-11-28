@@ -4,6 +4,8 @@
     <string name="mindfullness">Mindfullness</string>
     <string name="mindfulness">mindfulness</string>
     <string name="nutrition">Nutrition</string>
+    <string name="permission_deny_text">Required permissions denied. Exiting.</string>
+    <string name="tensorflow_lite_logo_description">TensorFlow Lite logo</string>
 
 
     <string-array name="diet">
@@ -65,7 +67,6 @@
         <item>Below 25</item>
         <item>Below 25</item>
     </string-array>
-
 
 
     <!-- TODO: Remove or change this placeholder text -->

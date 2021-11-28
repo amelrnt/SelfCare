@@ -3,6 +3,7 @@ package com.example.selfcare;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -28,6 +29,14 @@ boolean play=false;
         YouTubePlayerView youTubePlayerView =findViewById(R.id.videoView);
         getLifecycle().addObserver(youTubePlayerView);
         TextView benefit=findViewById(R.id.benefit);
+        Button detect =findViewById(R.id.detect);
+        detect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MeditationActivity.this,PoseDetectionActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
         ArrayList<String> code= new ArrayList<>();

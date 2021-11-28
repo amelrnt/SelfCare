@@ -13,18 +13,21 @@
         <entry key="app/src/main/res/drawable/gradient6.xml" value="0.2967313585291113" />
         <entry key="app/src/main/res/drawable/gradient7.xml" value="0.2598958333333333" />
         <entry key="app/src/main/res/drawable/play.xml" value="0.20555555555555555" />
+        <entry key="app/src/main/res/layout/activity_camerx.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/activity_exercise.xml" value="0.14479166666666668" />
         <entry key="app/src/main/res/layout/activity_find_recipe.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_happyness_meter.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_meditation.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_nutrition_value.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_pose_detection.xml" value="0.26666666666666666" />
         <entry key="app/src/main/res/layout/fragment_exercise.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_food.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_food_nutrition.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/fragment_mindfulness.xml" value="0.251725236661437" />
         <entry key="app/src/main/res/layout/nutrition_item.xml" value="0.22" />
         <entry key="app/src/main/res/layout/recipe_item.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/recognition_item.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.28229166666666666" />
       </map>
     </option>
